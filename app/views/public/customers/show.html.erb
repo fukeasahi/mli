@@ -1,0 +1,15 @@
+<h2>views/public/customers/show.html.erb</h2>
+
+<div>
+  <p>苗字：<%= current_customer.last_name %></p>
+  <p>名前：<%= current_customer.first_name %></p>
+  <p>苗字かな：<%= current_customer.last_name_kana %></p>
+  <p>名前かな：<%= current_customer.first_name_kana %></p>
+  <p>email：<%= current_customer.email %></p>
+  <p>manaba+RのUserID：<%= current_customer.manaba_user_id %></p>
+  <p>manaba+RのPassword：<%= current_customer.manaba_password %></p>
+  <p>line_path：<%= current_customer.line_path %></p>
+  <p>LINEの通知：<%= current_customer.is_active ? "ON" : "OFF" %></p>
+  
+  <%= link_to '個人情報 編集', edit_customers_path %>
+</div>

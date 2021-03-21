@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     get '/customers/sign_up' => 'public/registrations#new', as: :new_customer_registration
     post '/customers' => 'puvlic/registrations#create', as: :customer_registration
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'public/homes#top'
-  get '/about' => 'public/homes#about'
+  
+  scope module: :public do
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
+    resource :customers, only: [:edit, :update, :show]
+  end
+  
 end

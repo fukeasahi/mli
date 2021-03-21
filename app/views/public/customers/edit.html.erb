@@ -1,0 +1,53 @@
+<h2>views/public/customers/edit.html.erb</h2>
+
+<%= form_with model: current_customer, url: customer_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_kana %><br />
+    <%= f.text_field :last_name_kana, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %><br />
+    <%= f.text_field :first_name_kana, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :manaba_user_id %><br />
+    <%= f.text_field :manaba_user_id, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :manaba_password %><br />
+    <%= f.text_field :manaba_password, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :line_path %><br />
+    <%= f.text_field :line_path, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :is_active %>
+    <%= f.label :Lineに通知を送る %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
