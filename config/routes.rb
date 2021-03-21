@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     delete '/admin/sign_out' => 'admin/sessions#destroy', as: :destroy_admin_session
   end
   
+  namespace :admin do
+    resources :customers
+  end
+  
   devise_for :customers, skip: :all
   devise_scope :customer do
     get '/customers/sign_in' => 'public/sessions#new', as: :new_customer_session

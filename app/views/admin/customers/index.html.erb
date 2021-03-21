@@ -1,0 +1,15 @@
+<h2>/views/admin/customers/index.html.erb</h2>
+
+<% @customers.each do |customer| %>
+<div>
+  <p>苗字：<%= customer.last_name %></p>
+  <p>名前：<%= customer.first_name %></p>
+  <p>苗字かな：<%= customer.last_name_kana %></p>
+  <p>名前かな：<%= customer.first_name_kana %></p>
+  <p>manab+RのUserID：<%= customer.manaba_user_id %></p>
+  <p>manab+Rのパスワード：<%= customer.manaba_password %></p>
+  <p>LINEのパス：<%= customer.line_path %></p>
+  <p>email：<%= customer.email %></p>
+  <p>LINEの通知：<%= customer.is_active ? "ON" : "OFF" %></p>
+</div>
+<% end %>
