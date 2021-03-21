@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    get '/lines/about' => 'lines#about'
     resource :customers, only: [:edit, :update, :show]
   end
   
