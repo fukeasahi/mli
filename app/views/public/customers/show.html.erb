@@ -1,15 +1,43 @@
-<h2>views/public/customers/show.html.erb</h2>
-
-<div>
-  <p>苗字：<%= current_customer.last_name %></p>
-  <p>名前：<%= current_customer.first_name %></p>
-  <p>苗字かな：<%= current_customer.last_name_kana %></p>
-  <p>名前かな：<%= current_customer.first_name_kana %></p>
-  <p>email：<%= current_customer.email %></p>
-  <p>manaba+RのUserID：<%= current_customer.manaba_user_id %></p>
-  <p>manaba+RのPassword：<%= current_customer.manaba_password %></p>
-  <p>line_path：<%= current_customer.line_path %></p>
-  <p>LINEの通知：<%= current_customer.is_active ? "ON" : "OFF" %></p>
-  
+<div class="col-sm-3">
+  <h2>個人情報 詳細</h2>
+  <table class="table">
+    <tr>
+      <th>姓</th>
+      <th><%= current_customer.last_name %></th>
+    </tr>
+    <tr>
+      <th>名</th>
+      <th><%= current_customer.first_name %></th>
+    </tr>
+    <tr>
+      <th>セイ</th>
+      <th><%= current_customer.last_name_kana %></th>
+    </tr>
+    <tr>
+      <th>メイ</th>
+      <th><%= current_customer.first_name_kana %></th>
+    </tr>
+    <tr>
+      <th>メール</th>
+      <th><%= current_customer.email %></th>
+    </tr>
+    <tr>
+      <th>manabaのUserID</th>
+      <th><%= current_customer.manaba_user_id %></th>
+    </tr>
+    <tr>
+      <th>manabaのPassword</th>
+      <th><%= current_customer.manaba_password %></th>
+    </tr>
+    <tr>
+      <th>LINEのpath</th>
+      <th><%= current_customer.line_path %></th>
+    </tr>
+    <tr>
+      <th>LINEの通知</th>
+      <th><%= current_customer.is_active ? "ON" : "OFF" %></th>
+    </tr>
+  </table>
   <%= link_to '個人情報 編集', edit_customers_path %>
 </div>
+<div class="col-sm-9"></div>
