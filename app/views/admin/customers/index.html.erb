@@ -1,15 +1,28 @@
 <h2>/views/admin/customers/index.html.erb</h2>
 
 <% @customers.each do |customer| %>
-<div>
-  <p>苗字：<%= customer.last_name %></p>
-  <p>名前：<%= customer.first_name %></p>
-  <p>苗字かな：<%= customer.last_name_kana %></p>
-  <p>名前かな：<%= customer.first_name_kana %></p>
-  <p>manab+RのUserID：<%= customer.manaba_user_id %></p>
-  <p>manab+Rのパスワード：<%= customer.manaba_password %></p>
-  <p>LINEのパス：<%= customer.line_path %></p>
-  <p>email：<%= customer.email %></p>
-  <p>LINEの通知：<%= customer.is_active ? "ON" : "OFF" %></p>
-</div>
+  <table>
+      <tr>
+        <th>名前</th>
+        <th>manab+RのUser ID</th>
+        <th>manab+RのPassword</th>
+        <th>LINEのパス</th>
+        <th>email</th>
+        <th>LINEの通知</th>
+        <th>作成日時</th>
+        <th>更新日時</th>
+      </tr>
+      <tr>
+        <th><%= customer.last_name %><%= customer.first_name %></th>
+        <th><%= customer.manaba_user_id %></th>
+        <th><%= customer.manaba_password %></th>
+        <th><%= customer.line_path %></th>
+        <th><%= customer.email %></th>
+        <th><%= customer.is_active ? "ON" : "OFF" %></th>
+        <th><%= customer.created_at.strftime("%Y/%m/%d %H:%M") %></th>
+        <th><%= customer.updated_at.strftime("%Y/%m/%d %H:%M") %></th>
+      </tr>
+    </table>
 <% end %>
+
+

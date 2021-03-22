@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    resources :customers
+    resources :customers, only: [:index]
   end
   
   devise_for :customers, skip: :all
