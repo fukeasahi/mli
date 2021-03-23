@@ -14,3 +14,20 @@
  *= require_self
  */
 @import "bootstrap";
+
+a:hover{
+  color: green;
+}
+
+li {
+  list-style: none;
+}
+
+.application_header {
+  max-height: 50px;
+  overflow: hidden;
+}
+
+.application_header_text {
+  line-height: 50px;
+}
