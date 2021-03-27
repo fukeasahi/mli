@@ -2,25 +2,25 @@
   <h2>ログイン</h2>
 
   <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
-    <div class="field">
+    <div class="form-group">
       <%= f.label :メール %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "ritsumeikan@gmail.com" %>
     </div>
   
-    <div class="field">
+    <div class="form-group">
       <%= f.label :パスワード %><br />
-      <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+      <%= f.password_field :password, autocomplete: "current-password", class:"form-control", placeholder: "dhBp5J" %>
     </div>
   
     <% if devise_mapping.rememberable? %>
-      <div class="field">
+      <div class="form-group">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       </div>
     <% end %>
   
-    <div class="actions">
-      <%= f.submit "ログイン" %>
+    <div class="form-group">
+      <%= f.submit "ログイン", class:"btn btn-outline-light was-validated", id:"button" %>
     </div>
   <% end %>
   
@@ -28,3 +28,65 @@
 
 </div>
 <div class="col-sm-9"></div>
+
+<script>
+  (function () {
+    'use strict'
+
+    var forms = document.querySelectorAll('.form-control')
+    var button = document.getElementById("button")
+
+      Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('input', function (event) {
+
+          function validated(){
+            form.classList.add('was-validated')
+            form.classList.remove('was-invalidated')
+          }
+
+          function invalidated(){
+            form.classList.remove('was-validated')
+            form.classList.add('was-invalidated')
+          }
+
+          if((form.id == "admin_password") || (form.id == "admin_password_confirmation")){
+            if(form.value.length < 6){
+              validated()
+            } else {
+              invalidated()
+            }
+          } else if (form.id == "admin_email"){
+            if(!form.value.match(/@/)){
+              validated()
+            } else {
+              invalidated()
+            }
+          } else {
+            if (form.value == "") {
+               validated()
+            } else {
+              invalidated()
+            }
+          }
+
+          var forms_classList = document.querySelectorAll('.form-control')
+          var num = 0
+
+          for(var i=0; i<forms_classList.length; i++){
+            if(forms_classList[i].classList.value == "form-control was-invalidated"){
+              num += 1
+            }
+          }
+
+          if(forms_classList.length == num){
+            button.classList.remove('was-validated')
+          } else {
+            button.classList.add('was-validated')
+          }
+
+        }, false)
+
+      })
+  })()
+</script>

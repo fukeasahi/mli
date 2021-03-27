@@ -1,5 +1,5 @@
 <div class="col-sm-3">
-  <h2>個人情報 詳細</h2>
+  <h2>個人情報詳細</h2>
   <table class="table">
     <tr>
       <th>姓</th>
@@ -22,15 +22,15 @@
       <th><%= current_customer.email %></th>
     </tr>
     <tr>
-      <th>manabaのUserID</th>
+      <th>manaba+RのUser ID</th>
       <th><%= current_customer.manaba_user_id %></th>
     </tr>
     <tr>
-      <th>manabaのPassword</th>
+      <th>manaba+RのPassword</th>
       <th><%= current_customer.manaba_password %></th>
     </tr>
     <tr>
-      <th>LINEのpath</th>
+      <th>LINEのパス</th>
       <th><%= current_customer.line_path %></th>
     </tr>
     <tr>
@@ -38,6 +38,6 @@
       <th><%= current_customer.is_active ? "ON" : "OFF" %></th>
     </tr>
   </table>
-  <%= link_to '個人情報編集', edit_customers_path %>
+  <%= link_to '個人情報編集', edit_customers_path, class:"btn btn-outline-light" %>
 </div>
 <div class="col-sm-9"></div>

@@ -1,17 +1,20 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_customer!, only: [:show, :edit, :update]
-  
+  before_action :authenticate_customer!
+
   def show
   end
-  
+
   def edit
   end
-  
+
   def update
-    current_customer.update(customer_params)
-    redirect_to customers_path
+    if current_customer.update(customer_params)
+      redirect_to customers_path
+    else
+      render :edit
+    end
   end
-  
+
   private
 
   def customer_params

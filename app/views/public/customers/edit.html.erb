@@ -1,56 +1,159 @@
 <div class="col-sm-3">
-  <h2>個人情報 編集</h2>
+  <h2>個人情報編集</h2>
 
   <%= form_with model: current_customer, url: customer_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
 
-    <div class="field">
-      <%= f.label :姓 %><br />
-      <%= f.text_field :last_name, autofocus: true, class:"form-control" %>
+    <div class="form-group">
+      <%= f.label :last_name, "姓" %><br />
+      <%= f.text_field :last_name, autofocus: true, class:"form-control was-invalidated", placeholder: "立命館" %>
     </div>
 
-    <div class="field">
-      <%= f.label :名 %><br />
-      <%= f.text_field :first_name, autofocus: true, class:"form-control" %>
+    <div class="form-group">
+      <%= f.label :first_name, "名" %><br />
+      <%= f.text_field :first_name, autofocus: true, class:"form-control was-invalidated", placeholder: "太郎" %>
     </div>
 
-    <div class="field">
-      <%= f.label :セイ %><br />
-      <%= f.text_field :last_name_kana, autofocus: true, class:"form-control" %>
+    <div class="form-group">
+      <%= f.label :last_name_kana, "セイ" %><br />
+      <%= f.text_field :last_name_kana, autofocus: true, class:"form-control was-invalidated", placeholder: "リツメイカン" %>
     </div>
 
-    <div class="field">
-      <%= f.label :メイ %><br />
-      <%= f.text_field :first_name_kana, autofocus: true, class:"form-control" %>
+    <div class="form-group">
+      <%= f.label :first_name_kana, "メイ" %><br />
+      <%= f.text_field :first_name_kana, autofocus: true, class:"form-control was-invalidated", placeholder: "タロウ" %>
     </div>
 
-    <div class="field">
-      <%= f.label :manabaのUserID %><br />
-      <%= f.text_field :manaba_user_id, autofocus: true, class:"form-control" %>
+    <div class="form-group">
+      <%= f.label :manaba_user_id, "manaba+RのUser ID" %><br />
+      <%= f.text_field :manaba_user_id, autofocus: true, class:"form-control was-invalidated", placeholder: "zz0123zz" %>
     </div>
 
-    <div class="field">
-      <%= f.label :manabaのPassword %><br />
-      <%= f.text_field :manaba_password, autofocus: true, class:"form-control" %>
+    <div class="form-group">
+      <%= f.label :manaba_password, "manaba+RのPassword" %><br />
+      <%= f.text_field :manaba_password, autofocus: true, class:"form-control was-invalidated", placeholder: "Ftr7Rnzp" %>
     </div>
 
-    <div class="field">
-      <%= f.label :LINEのパス %><br />
-      <%= f.text_field :line_path, autofocus: true, class:"form-control" %>
+    <div class="form-group">
+      <%= f.label :line_path, "LINEのパス" %><br />
+      <%= f.text_field :line_path, autofocus: true, class:"form-control was-invalidated", placeholder: "" %>
     </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+    <div class="form-group">
+      <%= f.label :email, "メール" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control was-invalidated", placeholder: "ritsumeikan@gmail.com" %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.check_box :is_active %>
-      <%= f.label :Lineに通知を送る %>
+      <%= f.label :is_active, "LINEに通知を送る" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Sign up" %>
+    <div class="form-group"> 
+      <%= f.submit "更新", class:"btn btn-outline-light was-invalidated", id:"button" %>
     </div>
   <% end %>
 </div>
 <div class="col-sm-9"></div>
+
+<!--<style>-->
+<!--  .form-control.was-validated{-->
+<!--    border-color: #dc3545;-->
+<!--  }-->
+  
+<!--  .btn.btn-outline-light.was-validated{-->
+<!--    visibility: hidden;-->
+<!--    opacity: 0;-->
+<!--  }-->
+  
+<!--  .btn.btn-outline-light{-->
+<!--    visibility: none;-->
+<!--    opacity: 1;-->
+<!--    transition: 1s;-->
+<!--  }-->
+<!--</style>-->
+
+<!--<script>-->
+<!--  (function () {-->
+<!--    'use strict'-->
+    
+<!--    var forms = document.querySelectorAll('.form-control')-->
+<!--    var button = document.getElementById("button")-->
+    
+<!--      Array.prototype.slice.call(forms)-->
+<!--      .forEach(function (form) {-->
+<!--        form.addEventListener('input', function (event) {-->
+<!--          console.log(form.value)-->
+<!--          if (form.value == "") {-->
+            
+<!--            form.classList.add('was-validated')-->
+<!--            button.classList.add('was-validated')-->
+<!--          } else {-->
+<!--            form.classList.remove('was-validated')-->
+<!--            button.classList.remove('was-validated')-->
+<!--          }-->
+<!--        }, false)-->
+<!--      })-->
+<!--  })()-->
+<!--</script>-->
+
+<script>
+  (function () {
+    'use strict'
+
+    var forms = document.querySelectorAll('.form-control')
+    var button = document.getElementById("button")
+
+      Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('input', function (event) {
+
+          function validated(){
+            form.classList.add('was-validated')
+            form.classList.remove('was-invalidated')
+          }
+
+          function invalidated(){
+            form.classList.remove('was-validated')
+            form.classList.add('was-invalidated')
+          }
+
+          if((form.id == "customer_password") || (form.id == "customer_password_confirmation")){
+            if(form.value.length < 6){
+              validated()
+            } else {
+              invalidated()
+            }
+          } else if (form.id == "customer_email"){
+            if(!form.value.match(/@/)){
+              validated()
+            } else {
+              invalidated()
+            }
+          } else {
+            if (form.value == "") {
+               validated()
+            } else {
+              invalidated()
+            }
+          }
+
+          var forms_classList = document.querySelectorAll('.form-control')
+          var num = 0
+
+          for(var i=0; i<forms_classList.length; i++){
+            if(forms_classList[i].classList.value == "form-control was-invalidated"){
+              num += 1
+            }
+          }
+
+          if(forms_classList.length == num){
+            button.classList.remove('was-validated')
+          } else {
+            button.classList.add('was-validated')
+          }
+
+        }, false)
+
+      })
+  })()
+</script>

@@ -14,9 +14,19 @@
  *= require_self
  */
 @import "bootstrap";
+*{
+  color: #495057;
+}
 
-a:hover{
-  color: green;
+a {
+  text-decoration:none;
+  color: #495057;
+}
+
+.btn-outline-light{
+  border: 1px solid #ced4da;
+  color: #495057;
+  width: 100%;
 }
 
 li {
@@ -26,8 +36,34 @@ li {
 .application_header {
   max-height: 50px;
   overflow: hidden;
+  border-bottom: 1px solid #ced4da;
+  margin-bottom: 16px;
 }
 
 .application_header_text {
   line-height: 50px;
 }
+
+.registrations_new_label_password {
+  margin: 0;
+}
+
+.form-control.was-validated{
+  border-color: #dc3545;
+}
+
+.form-control.was-invalidated{
+  border-color: #198754;
+}
+
+.btn.btn-outline-light.was-validated{
+  visibility: hidden;
+  opacity: 0;
+}
+
+.btn.btn-outline-light{
+  visibility: none;
+  opacity: 1;
+  transition: 1s;
+}
+
